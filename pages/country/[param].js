@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { Toolbar } from "../../components/toolbar";
 
-export const Feed = ({ pageNumber, articles }) => {
+export const Feed = ({ articles }) => {
   const router = useRouter();
   return (
     <>
@@ -11,27 +11,27 @@ export const Feed = ({ pageNumber, articles }) => {
       </Head>
       <div>
         <Toolbar />
-        <div className="flex flex-col mt-[10px]">
+        <div className="flex flex-col mt-[10px] items-center">
           {articles.map((article, index) => (
             <div
-              onClick={() => (window.location.href = article.url)}
-              className="flex flex-row p-10 mt-[5rem] w-[100%] justify-around cursor-pointer hover:scale-105 shadow-2xl"
+              className="p-10 mt-[5rem] max-w-xl  bg-gray-800 border-gray-700 hover:bg-gray-700 hover:scale-105"
               key={index}
             >
               <h1
-                className="font-bold text-2xl text-center justify-center border-b-[5px] border-red-700 p-6"
+                onClick={() => (window.location.href = article.url)}
+                className="bold text-2xl text-center text-white cursor-pointer border-[5px] p-6"
               >
                 {article.title}
               </h1>
-              <p className="my-5">{article.description}</p>
+              <p className="my-5 text-white">{article.description}</p>
               {!!article.urlToImage && (
-                <img className="w-[500px]" src={article.urlToImage} />
+                <img className="w-[100%] " src={article.urlToImage} />
               )}
             </div>
           ))}
         </div>
 
-        <div className="flex justify-around text-black mt-5 text-xl">
+        {/* <div className="flex justify-around text-black mt-5 text-xl">
           <div
             className={
               pageNumber === 1 ? "cursor-not-allowed text-gray-400 bg-red-700 rounded-full p-3" : "cursor-pointer  bg-red-700 rounded-full p-3"
@@ -63,24 +63,16 @@ export const Feed = ({ pageNumber, articles }) => {
           >
             Next Page
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
 };
 
 export const getServerSideProps = async (pageContext) => {
-  const pageNumber = pageContext.query.id;
-  if (!pageNumber || pageNumber < 1 || pageNumber > 5) {
-    return {
-      props: {
-        articles: [],
-        pageNumber: 1,
-      },
-    };
-  }
+  const country = pageContext.query.param;
   const apiResponse = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=in&pageSize=5&page=${pageNumber}`,
+    `https://newsapi.org/v2/top-headlines?country=${country}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`,
@@ -92,7 +84,6 @@ export const getServerSideProps = async (pageContext) => {
   return {
     props: {
       articles,
-      pageNumber: Number.parseInt(pageNumber),
     },
   };
 };

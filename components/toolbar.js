@@ -10,27 +10,27 @@ export const Toolbar = () => {
       <div className=" flex flex-row ">
         <div className="w-[120px] h-[120px]">
         <Image  src={Logo}></Image></div>
-        <div className="w-[520px] h-[100px] ml-[30rem]">
-        <Image  src={Gif1}></Image></div>
+        {/* <div className="w-[520px] h-[100px] ml-[34rem]">
+        <Image  src={Gif1}></Image></div> */}
       </div>
       <div className="flex bg-red-600 py-[1.6%] pl-[43.5%] text-xl">
         <div
           onClick={() => router.push("/")}
-          className="mr-10 font-verdana cursor-pointer"
+          className="mr-10 font-verdana cursor-pointer bold text-white"
         >
           Home
         </div>
         <div
           onClick={() => router.push("/feed/1")}
-          className="mr-10 font-sans cursor-pointer"
+          className="mr-10 font-sans cursor-pointer bold text-white"
         >
           Feed
         </div>
         <div
-          onClick={() => router.push("/eom")}
-          className="mr-10 font-sans cursor-pointer"
+          onClick={() => router.push("/starred")}
+          className="mr-10 font-sans cursor-pointer bold text-white"
         >
-          EOM
+          Starred
         </div>
       </div>
     </div>
