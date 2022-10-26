@@ -1,11 +1,15 @@
 import { Toolbar } from "../components/toolbar";
 import Head from "next/head";
-import Button from "../components/homebutton"
+import Button from "../components/homebutton";
+import React, { useState ,createContext} from "react";
+
 export default function Home() {
-  const handleClick=(e)=>{
-    const c=e.target.parentElement.dataset.value;
-    console.log(c);
-  }
+  const [ctry, setctry] = useState("");
+  const handleClick = (e) => {
+    const c = e.target.parentElement.dataset.value;
+    setctry(c);
+  };
+  console.log(ctry);
   return (
     <div>
       <Head>
@@ -13,11 +17,11 @@ export default function Home() {
       </Head>
       <Toolbar />
       <div className="flex flex-col items-center justify-center">
-        <h3 className="bold text-4xl mt-7">
+        <h3 className="text-4xl mt-7">
           You are one click away from your country
         </h3>
-        <div className="flex flex-col shadow-2xl h-[500px] w-[400px] justify-around my-[100px] items-center bg-pink-200">
-          <h1 className="text-2xl">Select Country</h1>
+        <div className="flex flex-col shadow-2xl h-[500px] w-[400px] justify-around my-[100px] items-center bg-[#f0f2f5]">
+          <h1 className="font-bold text-2xl">Select Country</h1>
           <div className="dropdown inline-block relative">
             <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
               <span className="mr-1">Country</span>
@@ -32,13 +36,13 @@ export default function Home() {
             <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
               <li onClick={handleClick} data-value="in">
                 <a
-                  className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#" 
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                  href="#"
                 >
                   India
                 </a>
               </li>
-              <li className="">
+              <li onClick={handleClick} data-value="us">
                 <a
                   className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
                   href="#"
@@ -46,9 +50,9 @@ export default function Home() {
                   USA
                 </a>
               </li>
-              <li className="">
+              <li onClick={handleClick} data-value="ca">
                 <a
-                  className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
                   href="#"
                 >
                   Canada
@@ -56,7 +60,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
-          <Button />
+          <Button cy={ctry}/>
         </div>
       </div>
     </div>
