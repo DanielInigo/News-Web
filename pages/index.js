@@ -5,11 +5,13 @@ import React, { useState ,createContext} from "react";
 
 export default function Home() {
   const [ctry, setctry] = useState("");
+  const [name,setname]=useState("Country");
   const handleClick = (e) => {
     const c = e.target.parentElement.dataset.value;
+    const t=e.target.innerHTML;
     setctry(c);
+    setname(t);
   };
-  console.log(ctry);
   return (
     <div>
       <Head>
@@ -24,7 +26,7 @@ export default function Home() {
           <h1 className="font-bold text-2xl">Select Country</h1>
           <div className="dropdown inline-block relative">
             <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
-              <span className="mr-1">Country</span>
+              <span className="mr-1">{name}</span>
               <svg
                 className="fill-current h-4 w-4"
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,30 +35,90 @@ export default function Home() {
                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
               </svg>
             </button>
-            <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
+            <ul className="dropdown-menu w-[150%] h-[300%] overflow-auto absolute hidden text-gray-700 pt-1">
               <li onClick={handleClick} data-value="in">
-                <a
-                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
                 >
                   India
-                </a>
+                </div>
               </li>
               <li onClick={handleClick} data-value="us">
-                <a
-                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
                 >
                   USA
-                </a>
+                </div>
               </li>
               <li onClick={handleClick} data-value="ca">
-                <a
-                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
                 >
                   Canada
-                </a>
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="au">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  Australia
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="ie">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  IreLand
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="my">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  Malaysia
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="ng">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  Nigeria
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="ph">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  Philippines
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="sa">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  Saudi Arabia
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="sg">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  Singapore
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="za">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  South Africa
+                </div>
+              </li>
+              <li onClick={handleClick} data-value="gb">
+                <div
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                >
+                  United KIngdom
+                </div>
               </li>
             </ul>
           </div>

@@ -72,7 +72,7 @@ export const Feed = ({ articles }) => {
 export const getServerSideProps = async (pageContext) => {
   const country = pageContext.query.param;
   const apiResponse = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=${country}`,
+    `https://newsapi.org/v2/top-headlines?country=${country}&pageSize=40`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`,

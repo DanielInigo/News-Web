@@ -36,7 +36,7 @@ export const Feed = ({ articles }) => {
 export const getServerSideProps = async (pageContext) => {
   const cat=pageContext.query.category;  
   const apiResponse = await fetch(
-    `https://newsapi.org/v2/top-headlines?category=${cat}`,
+    `https://newsapi.org/v2/top-headlines?category=${cat}&pageSize=40`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`,
