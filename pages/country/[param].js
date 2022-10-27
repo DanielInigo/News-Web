@@ -30,40 +30,6 @@ export const Feed = ({ articles }) => {
             </div>
           ))}
         </div>
-
-        {/* <div className="flex justify-around text-black mt-5 text-xl">
-          <div
-            className={
-              pageNumber === 1 ? "cursor-not-allowed text-gray-400 bg-red-700 rounded-full p-3" : "cursor-pointer  bg-red-700 rounded-full p-3"
-            }
-            onClick={() => {
-              if (pageNumber > 1) {
-                router
-                  .push(`/feed/${pageNumber - 1}`)
-                  .then(() => window.scrollTo(0, 0));
-              }
-            }}
-          >
-            Previous Page
-          </div>
-          <div className="ml-[10px]">Page {pageNumber}</div>
-          <div
-            className={
-              pageNumber === 5
-                ? "cursor-not-allowed ml-[10px] text-gray-400  bg-red-700 rounded-full p-3"
-                : "cursor-pointer ml-[10px] bg-red-700 rounded-full p-3"
-            }
-            onClick={() => {
-              if (pageNumber < 5) {
-                router
-                  .push(`/feed/${pageNumber + 1}`)
-                  .then(() => window.scrollTo(0, 0));
-              }
-            }}
-          >
-            Next Page
-          </div>
-        </div> */}
       </div>
     </>
   );

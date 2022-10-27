@@ -2,6 +2,7 @@ import { Toolbar } from "../components/toolbar";
 import Head from "next/head";
 import Button from "../components/homebutton";
 import React, { useState} from "react";
+import dsc from "../components/images/world.jpg"
 
 export default function Home() {
   const [ctry, setctry] = useState("");
@@ -19,10 +20,11 @@ export default function Home() {
       </Head>
       <Toolbar />
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-4xl mt-7">
+        <div className="bg-[url('../components/images/world.jpg')] bg-cover w-[80%] ">
+        <h3 className="text-4xl mt-7 text-center">
           You are one click away from your country
         </h3>
-        <div className="flex flex-col shadow-2xl h-[500px] w-[400px] justify-around my-[100px] items-center bg-[#f0f2f5]">
+        <div className="flex flex-col shadow-2xl h-[500px] w-[400px] justify-around ml-[35%] my-[100px] items-center bg-white">
           <h1 className="font-bold text-2xl">Select Country</h1>
           <div className="dropdown inline-block relative">
             <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
@@ -124,6 +126,7 @@ export default function Home() {
           </div>
           <Button cy={ctry}/>
         </div>
+      </div>
       </div>
     </div>
   );
