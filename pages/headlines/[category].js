@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Toolbar } from "../../components/toolbar";
+import {RiBookmarkFill} from "react-icons/ri";
 
 export const Feed = ({ articles }) => {
   return (
@@ -13,7 +14,7 @@ export const Feed = ({ articles }) => {
           {articles.map((article, index) => (
             <div
               onClick={() => (window.location.href = article.url)}
-              className="flex flex-col p-10 justify-around cursor-pointer hover:scale-105 shadow-2xl"
+              className="flex flex-col p-10 justify-around cursor-pointer shadow-2xl"
               key={index}
             >
               <h1
@@ -25,6 +26,7 @@ export const Feed = ({ articles }) => {
               {!!article.urlToImage && (
                 <img className="w-[50%] h-[50%] self-center" src={article.urlToImage} />
               )}
+              <RiBookmarkFill className="hover:scale-110 w-[5%] h-[5%]"/>
             </div>
           ))}
         </div>

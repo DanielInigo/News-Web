@@ -2,7 +2,6 @@ import { Toolbar } from "../components/toolbar";
 import Head from "next/head";
 import Button from "../components/homebutton";
 import React, { useState} from "react";
-import dsc from "../components/images/world.jpg"
 
 export default function Home() {
   const [ctry, setctry] = useState("");
