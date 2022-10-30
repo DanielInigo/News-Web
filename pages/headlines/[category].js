@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Toolbar } from "../../components/toolbar";
 import {RiBookmarkFill} from "react-icons/ri";
 
+export const ob=[];
 export const Feed = ({ articles }) => {
   return (
     <>
@@ -13,20 +14,25 @@ export const Feed = ({ articles }) => {
         <div className="grid grid-cols-2 gap-8">
           {articles.map((article, index) => (
             <div
-              onClick={() => (window.location.href = article.url)}
               className="flex flex-col p-10 justify-around cursor-pointer shadow-2xl"
               key={index}
             >
               <h1
+                onClick={() => (window.location.href = article.url)}
                 className="font-bold text-2xl text-center justify-center border-b-[5px] border-red-700 p-1"
               >
                 {article.title}
               </h1>
-              <p className="my-5">{article.description}</p>
+              <p 
+              onClick={() => (window.location.href = article.url)}
+              className="my-5">{article.description}</p>
               {!!article.urlToImage && (
-                <img className="w-[50%] h-[50%] self-center" src={article.urlToImage} />
+                <img onClick={() => (window.location.href = article.url)} className="w-[50%] h-[50%] self-center" src={article.urlToImage} />
               )}
-              <RiBookmarkFill className="hover:scale-110 w-[5%] h-[5%]"/>
+              <RiBookmarkFill onClick={()=>{
+                ob.push({"title": article.title, "desc":article.description, "im":article.urlToImage, "url":article.url})}
+
+                } className="hover:scale-110 w-[30px] h-[30px]"/>
             </div>
           ))}
         </div>
