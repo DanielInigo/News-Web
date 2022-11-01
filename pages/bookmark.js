@@ -39,7 +39,7 @@ function BookMark(){
               >
                 {article.title}
               </h1>
-              <p className="my-5">{article.description}</p>
+              <p className="my-5">{article.desc}</p>
             <img className="w-[50%] h-[50%] self-center" src={article.im} />
             </div>
           ))}
@@ -56,7 +56,7 @@ function BookMark(){
               >
                 {article.title}
               </h1>
-              <p className="my-5">{article.description}</p>
+              <p className="my-5">{article.desc}</p>
             <img className="w-[50%] h-[50%] self-center" src={article.im} />
             </div>
           ))}
