@@ -82,7 +82,7 @@ export const Toolbar = () => {
               }}
               className="p-8 font-sans cursor-pointer bold text-white hover:bg-red-500"
             >
-              <a href="/api/auth/signin">SignIn</a>
+              <Link href="/api/auth/signin">SignIn</Link>
             </div>
         )}
         {session && (
@@ -94,7 +94,7 @@ export const Toolbar = () => {
               }}
               className="p-8 font-sans cursor-pointer bold text-white hover:bg-red-500"
             >
-              <a href="/api/auth/signout">SignOut</a>
+              <Link href="/api/auth/signout">SignOut</Link>
             </div>
           </div>
         )}
