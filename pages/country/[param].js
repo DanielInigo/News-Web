@@ -32,7 +32,7 @@ export const Feed = ({ articles }) => {
                 <img onClick={() => (window.location.href = article.url)} className="w-[50%] h-[50%] self-center" src={article.urlToImage} />
               )}
               <RiBookmarkFill onClick={()=>{
-                ob1.push({"title": article.title, "desc":article.description, "im":article.urlToImage, "url":article.url})}
+                ob1.push({"title": article.title, "desc":article.description, "im":article.urlToImage, "url":article.url});alert("Bookmark Added!!");}
 
                 } className="hover:scale-110 w-[30px] h-[30px]"/>
             </div>
