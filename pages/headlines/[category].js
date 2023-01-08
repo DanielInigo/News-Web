@@ -1,9 +1,25 @@
 import Head from "next/head";
 import { Toolbar } from "../../components/toolbar";
-import {RiBookmarkFill} from "react-icons/ri";
+import { RiBookmarkFill } from "react-icons/ri";
+import { useSession } from "next-auth/react";
 
-export const ob=[];
 export const Feed = ({ articles }) => {
+  const { data: session } = useSession();
+  const handleClick = async (news) => {
+    await fetch("http://localhost:3000/api/book", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: news.title,
+        description: news.description,
+        image: news.urlToImage,
+        url: news.url,
+        email: session.user.email,
+      }),
+    });
+  };
   return (
     <>
       <Head>
@@ -23,16 +39,27 @@ export const Feed = ({ articles }) => {
               >
                 {article.title}
               </h1>
-              <p 
-              onClick={() => (window.location.href = article.url)}
-              className="my-5">{article.description}</p>
+              <p
+                onClick={() => (window.location.href = article.url)}
+                className="my-5"
+              >
+                {article.description}
+              </p>
               {!!article.urlToImage && (
-                <img onClick={() => (window.location.href = article.url)} className="w-[50%] h-[50%] self-center" src={article.urlToImage} />
+                <img
+                  onClick={() => (window.location.href = article.url)}
+                  className="w-[50%] h-[50%] self-center"
+                  src={article.urlToImage}
+                />
               )}
-              <RiBookmarkFill onClick={()=>{
-                ob.push({"title": article.title, "desc":article.description, "im":article.urlToImage, "url":article.url});alert("Bookmark Added!!");}
-
-                } className="hover:scale-110 w-[30px] h-[30px]"/>
+              {session && (
+                <RiBookmarkFill
+                onClick={() => {
+                  handleClick(article);
+                }}
+                className="hover:scale-110 w-[30px] h-[30px]"
+              />
+              )}
             </div>
           ))}
         </div>
@@ -42,7 +69,7 @@ export const Feed = ({ articles }) => {
 };
 
 export const getServerSideProps = async (pageContext) => {
-  const cat=pageContext.query.category;  
+  const cat = pageContext.query.category;
   const apiResponse = await fetch(
     `https://newsapi.org/v2/top-headlines?category=${cat}&pageSize=40`,
     {
@@ -55,7 +82,7 @@ export const getServerSideProps = async (pageContext) => {
   const { articles } = apiJson;
   return {
     props: {
-        articles,
+      articles,
     },
   };
 };
